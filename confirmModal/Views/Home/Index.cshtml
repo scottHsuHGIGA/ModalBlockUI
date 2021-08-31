@@ -1,0 +1,37 @@
+﻿<div>
+    <button onclick="ShowMessage('你想要傳的訊息');">
+        開啟確認訊息
+    </button>
+</div>
+
+@*訊息Modal*@
+<div id="confirmModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="confirmcontext">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="confirmTitle" class="semi-bold">訊息</h4>
+            </div>
+            <div id="confirmBady" class="modal-body land-inline-striped"></div>
+            <div class="modal-footer text-left">
+                <button type="button" id="confirmYes" class="btn btn-primary" onclick="TestModalBlockUI();">測試blockUi</button>
+                <button type="button" id="confirmYes" class="btn btn-primary" data-dismiss="modal">確認</button>
+                <button type="button" id="confirmNo" class="btn btn-default" data-dismiss="modal" hidden>取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+    <script>
+        function ShowMessage(message) {
+            $("#confirmModal").modal("show");
+            $("#confirmBady").text(message);
+        }
+        function TestModalBlockUI() {
+            $("#confirmModal").block({ message: "處理中..." });
+        }
+    </script>
+}
